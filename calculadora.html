@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculadora</title>
+
 </head>
 
 <body>
@@ -14,6 +15,8 @@
     <button onclick="multiplicar()">Multiplicar</button>
     <button onclick="dividir()">Dividir</button>
     <div id="soma"></div>
+    <button onclick="executarTestes()">Executar Testes</button>
+    <div id="testes-resultados"></div>
     <script>
         function somar() {
             const num1 = parseFloat(document.getElementById("input1").value);
@@ -44,6 +47,9 @@
             }
         }
     </script>
+    <script src="utils.js"></script>
+    <script src="testes/unitario.test.js"></script>
+
 </body>
 
 </html>
