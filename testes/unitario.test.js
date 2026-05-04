@@ -1,51 +1,34 @@
-function testar(nome, fn) {
-    try {
-        fn();
-        return { nome, status: "PASSOU" };
-    } catch (e) {
-        return { nome, status: "FALHOU", erro: e.message };
-    }
-}
+// testes/unitario.test.js
+// Testes unitários — validam as funções matemáticas puras de utils.js
 
-function somarPuro(a, b) { return a + b; }
-function subtrairPuro(a, b) { return a - b; }
-function multiplicarPuro(a, b) { return a * b; }
-function dividirPuro(a, b) {
-    if (b === 0) return "Erro: Divisão por zero!";
-    return a / b;
-}
-
-function executarTestes() {
+function executarTestesUnitarios() {
     const resultados = [];
 
-    resultados.push(testar("UNIT - Soma positivos", () => {
-        if (somarPuro(2, 3) !== 5) throw new Error("Esperado 5");
-    }));
+    function assert(descricao, condicao) {
+        resultados.push({ descricao, passou: condicao });
+    }
 
-    resultados.push(testar("UNIT - Soma com negativo", () => {
-        if (somarPuro(5, -2) !== 3) throw new Error("Esperado 3");
-    }));
+    // somar
+    assert("somar(2, 3) === 5",          somar(2, 3) === 5);
+    assert("somar(-1, 1) === 0",          somar(-1, 1) === 0);
+    assert("somar(0, 0) === 0",           somar(0, 0) === 0);
+    assert("somar(1.5, 1.5) === 3",       somar(1.5, 1.5) === 3);
 
-    resultados.push(testar("UNIT - Subtração", () => {
-        if (subtrairPuro(10, 4) !== 6) throw new Error("Esperado 6");
-    }));
+    // subtrair
+    assert("subtrair(5, 3) === 2",        subtrair(5, 3) === 2);
+    assert("subtrair(0, 5) === -5",       subtrair(0, 5) === -5);
+    assert("subtrair(-2, -3) === 1",      subtrair(-2, -3) === 1);
 
-    resultados.push(testar("UNIT - Multiplicação", () => {
-        if (multiplicarPuro(3, 4) !== 12) throw new Error("Esperado 12");
-    }));
+    // multiplicar
+    assert("multiplicar(3, 4) === 12",    multiplicar(3, 4) === 12);
+    assert("multiplicar(-2, 5) === -10",  multiplicar(-2, 5) === -10);
+    assert("multiplicar(0, 99) === 0",    multiplicar(0, 99) === 0);
 
-    resultados.push(testar("UNIT - Divisão", () => {
-        if (dividirPuro(10, 2) !== 5) throw new Error("Esperado 5");
-    }));
+    // dividir
+    assert("dividir(10, 2) === 5",        dividir(10, 2) === 5);
+    assert("dividir(7, 2) === 3.5",       dividir(7, 2) === 3.5);
+    assert("dividir(0, 5) === 0",         dividir(0, 5) === 0);
+    assert("dividir(5, 0) === null",      dividir(5, 0) === null);
 
-    resultados.push(testar("UNIT - Divisão por zero", () => {
-        if (dividirPuro(10, 0) !== "Erro: Divisão por zero!") throw new Error("Esperado mensagem de erro");
-    }));
-
-    const div = document.getElementById("testes-resultados");
-    div.innerHTML = resultados.map(r => {
-        const cor = r.status === "PASSOU" ? "green" : "red";
-        const msg = r.erro ? ` — ${r.erro}` : "";
-        return `<p style="color:${cor}">${r.status}: ${r.nome}${msg}</p>`;
-    }).join("");
+    return resultados;
 }
