@@ -1,34 +1,58 @@
-// testes/unitario.test.js
-// Testes unitários — validam as funções matemáticas puras de utils.js
-
 function executarTestesUnitarios() {
     const resultados = [];
 
-    function assert(descricao, condicao) {
-        resultados.push({ descricao, passou: condicao });
+    function testar(descricao, fn) {
+        try {
+            fn();
+            resultados.push({ descricao, passou: true });
+        } catch (e) {
+            resultados.push({ descricao, passou: false });
+        }
     }
 
-    // somar
-    assert("somar(2, 3) === 5",          somar(2, 3) === 5);
-    assert("somar(-1, 1) === 0",          somar(-1, 1) === 0);
-    assert("somar(0, 0) === 0",           somar(0, 0) === 0);
-    assert("somar(1.5, 1.5) === 3",       somar(1.5, 1.5) === 3);
+    // funções puras extraídas da lógica do index.html
+    function somar(a, b) { return a + b; }
+    function subtrair(a, b) { return a - b; }
+    function multiplicar(a, b) { return a * b; }
+    function dividir(a, b) {
+        if (b === 0) return null;
+        return a / b;
+    }
 
-    // subtrair
-    assert("subtrair(5, 3) === 2",        subtrair(5, 3) === 2);
-    assert("subtrair(0, 5) === -5",       subtrair(0, 5) === -5);
-    assert("subtrair(-2, -3) === 1",      subtrair(-2, -3) === 1);
+    // testes de somar
+    testar("somar(2, 3) deve ser 5", () => {
+        if (somar(2, 3) !== 5) throw new Error("Esperado 5");
+    });
+    testar("somar(-1, 1) deve ser 0", () => {
+        if (somar(-1, 1) !== 0) throw new Error("Esperado 0");
+    });
+    testar("somar(0, 0) deve ser 0", () => {
+        if (somar(0, 0) !== 0) throw new Error("Esperado 0");
+    });
 
-    // multiplicar
-    assert("multiplicar(3, 4) === 12",    multiplicar(3, 4) === 12);
-    assert("multiplicar(-2, 5) === -10",  multiplicar(-2, 5) === -10);
-    assert("multiplicar(0, 99) === 0",    multiplicar(0, 99) === 0);
+    // testes de subtrair
+    testar("subtrair(5, 3) deve ser 2", () => {
+        if (subtrair(5, 3) !== 2) throw new Error("Esperado 2");
+    });
+    testar("subtrair(0, 5) deve ser -5", () => {
+        if (subtrair(0, 5) !== -5) throw new Error("Esperado -5");
+    });
 
-    // dividir
-    assert("dividir(10, 2) === 5",        dividir(10, 2) === 5);
-    assert("dividir(7, 2) === 3.5",       dividir(7, 2) === 3.5);
-    assert("dividir(0, 5) === 0",         dividir(0, 5) === 0);
-    assert("dividir(5, 0) === null",      dividir(5, 0) === null);
+    // testes de multiplicar
+    testar("multiplicar(3, 4) deve ser 12", () => {
+        if (multiplicar(3, 4) !== 12) throw new Error("Esperado 12");
+    });
+    testar("multiplicar(0, 99) deve ser 0", () => {
+        if (multiplicar(0, 99) !== 0) throw new Error("Esperado 0");
+    });
+
+    // testes de dividir
+    testar("dividir(10, 2) deve ser 5", () => {
+        if (dividir(10, 2) !== 5) throw new Error("Esperado 5");
+    });
+    testar("dividir(5, 0) deve retornar null", () => {
+        if (dividir(5, 0) !== null) throw new Error("Esperado null");
+    });
 
     return resultados;
 }

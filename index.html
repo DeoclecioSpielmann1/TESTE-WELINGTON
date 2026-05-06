@@ -33,18 +33,21 @@
             const num2 = parseFloat(document.getElementById("input2").value);
             const resultado = num1 + num2;
             document.getElementById("soma").textContent = "Resultado: " + (num1 + num2);
+            limparInputs();
         }
         function subtrair() {
             const num1 = parseFloat(document.getElementById("input1").value);
             const num2 = parseFloat(document.getElementById("input2").value);
             const resultado = num1 - num2;
             document.getElementById("soma").textContent = "Resultado: " + (num1 - num2);
+            limparInputs();
         }
         function multiplicar() {
             const num1 = parseFloat(document.getElementById("input1").value);
             const num2 = parseFloat(document.getElementById("input2").value);
             const resultado = num1 * num2;
             document.getElementById("soma").textContent = "Resultado: " + (num1 * num2);
+            limparInputs();
         }
         function dividir() {
             const num1 = parseFloat(document.getElementById("input1").value);
@@ -55,6 +58,7 @@
             } else {
                 document.getElementById("soma").textContent = "Erro: Divisão por zero!";
             }
+            limparInputs();
         }
 
         function renderizarResultados(containerId, titulo, resultados) {
@@ -74,15 +78,16 @@
         function rodarTestes() {
             const resultados = executarTestesUnitarios();
             renderizarResultados("testes-unitarios", "Testes Unitários", resultados);
+            limparInputs();
         }
 
         function rodarTestesComponent() {
             const resultados = executarTestesComponent();
             renderizarResultados("testes-componentes", "Testes de Componente", resultados);
+            limparInputs();
         }
     </script>
 
-    <script src="utils.js"></script>
     <script src="testes/unitario.test.js"></script>
     <script src="testes/component.test.js"></script>
 </body>
