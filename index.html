@@ -18,6 +18,7 @@
     <button onclick="subtrair()">Subtrair</button>
     <button onclick="multiplicar()">Multiplicar</button>
     <button onclick="dividir()">Dividir</button>
+    <button onclick="porcentagem()">%</button>
     <div id="soma"></div>
 
     <hr>
@@ -47,6 +48,13 @@
             const num2 = parseFloat(document.getElementById("input2").value);
             const resultado = num1 * num2;
             document.getElementById("soma").textContent = "Resultado: " + (num1 * num2);
+            limparInputs();
+        }
+        function porcentagem() {
+            const num1 = parseFloat(document.getElementById("input1").value);
+            const num2 = parseFloat(document.getElementById("input2").value);
+            const resultado = (num1 / 100) * num2;
+            document.getElementById("soma").textContent = "Resultado: " + ((num1 / 100) * num2);
             limparInputs();
         }
         function dividir() {

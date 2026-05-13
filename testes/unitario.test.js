@@ -18,6 +18,9 @@ function executarTestesUnitarios() {
         if (b === 0) return null;
         return a / b;
     }
+    function porcentagem(a, b) {
+        return (a / 100) * b;
+    }
 
     // testes de somar
     testar("somar(2, 3) deve ser 5", () => {
@@ -52,6 +55,22 @@ function executarTestesUnitarios() {
     });
     testar("dividir(5, 0) deve retornar null", () => {
         if (dividir(5, 0) !== null) throw new Error("Esperado null");
+    });
+
+    // teste de porcentagem
+    testar("porcentagem(50, 10) deve ser 5", () => {
+        const porcentagem = (num1, num2) => (num1 / 100) * num2;
+        if (porcentagem(50, 10) !== 5) throw new Error("Esperado 5");
+    });
+
+    testar("porcentagem(200, 15) deve ser 30", () => {
+        const porcentagem = (num1, num2) => (num1 / 100) * num2;
+        if (porcentagem(200, 15) !== 30) throw new Error("Esperado 30");
+    });
+
+    testar("porcentagem(50, 50) deve ser 25", () => {
+        const porcentagem = (num1, num2) => (num1 / 100) * num2;
+        if (porcentagem(50, 50) !== 25) throw new Error("Esperado 25");
     });
 
     return resultados;

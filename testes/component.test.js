@@ -37,6 +37,25 @@ function executarTestesComponent() {
         if (getResultado() !== "Resultado: 0") throw new Error("Esperado 'Resultado: 0'");
     });
 
+    // testes de porcentagem
+    testar("porcentagem(50, 10) exibe 'Resultado: 5'", () => {
+        setInputs(50, 10);
+        porcentagem();
+        if (getResultado() !== "Resultado: 5") throw new Error("Esperado 'Resultado: 5'");
+    });
+
+    testar("porcentagem(200, 15) exibe 'Resultado: 30'", () => {
+        setInputs(200, 15);
+        porcentagem();
+        if (getResultado() !== "Resultado: 30") throw new Error("Esperado 'Resultado: 30'");
+    });
+
+    testar("porcentagem(50, 50) exibe 'Resultado: 25'", () => {
+        setInputs(50, 50);
+        porcentagem();
+        if (getResultado() !== "Resultado: 25") throw new Error("Esperado 'Resultado: 25'");
+    });
+
     // testes de subtrair
     testar("subtrair(10, 4) exibe 'Resultado: 6'", () => {
         setInputs(10, 4);
@@ -79,9 +98,8 @@ function executarTestesComponent() {
     testar("dividir(5, 0) exibe mensagem de erro", () => {
         setInputs(5, 0);
         dividir();
-        limparInputs(); // Limpa os inputs após o teste
         if (getResultado() !== "Erro: Divisão por zero!") throw new Error("Esperado mensagem de erro");
-
+        limparInputs(); // Limpa os inputs após o teste
     });
     // Verifica o placeholder do input1 (separado dos testes de operações)
     testar("input1 possui placeholder 'Número 1'", () => {
