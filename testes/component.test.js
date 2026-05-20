@@ -16,19 +16,15 @@ function executarTestesComponent() {
     }
 
     function getResultado() {
-        return document.getElementById("soma").textContent;
-    }
-    function limparInputs() {
-        document.getElementById("input1").value = "";
-        document.getElementById("input2").value = "";
-        document.getElementById("soma").textContent = "";
+        return document.getElementById("soma").innerHTML;
     }
 
+
     // testes de somar
-    testar("somar(10, 5) exibe 'Resultado: 15'", () => {
+    testar("somar(10, 5) exibe Resultado: 15", () => {
         setInputs(10, 5);
         somar();
-        if (getResultado() !== "Resultado: 15") throw new Error("Esperado 'Resultado: 15'");
+        if (getResultado() !== 'Resultado: 15') throw new Error(document.getElementById("soma").innerHTML);
     });
 
     testar("somar(-3, 3) exibe 'Resultado: 0'", () => {
@@ -99,13 +95,10 @@ function executarTestesComponent() {
         setInputs(5, 0);
         dividir();
         if (getResultado() !== "Erro: Divisão por zero!") throw new Error("Esperado mensagem de erro");
-        limparInputs(); // Limpa os inputs após o teste
     });
-    // Verifica o placeholder do input1 (separado dos testes de operações)
     testar("input1 possui placeholder 'Número 1'", () => {
         const valorPlaceholder = document.getElementById("input1").placeholder.trim();
         console.log("Placeholder capturado:", valorPlaceholder);
-        limparInputs(); // Limpa os inputs após o teste
         if (valorPlaceholder.toLowerCase() !== "número 1") {
             throw new Error(`Placeholder incorreto: '${valorPlaceholder}'`);
         }

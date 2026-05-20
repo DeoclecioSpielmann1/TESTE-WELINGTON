@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>Calculadora</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; }
-        .passou  { color: green; }
-        .falhou  { color: red; }
-        #testes-unitarios, #testes-componentes { margin-top: 10px; }
-        h3 { margin-bottom: 6px; }
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        .passou {
+            color: green;
+        }
+
+        .falhou {
+            color: red;
+        }
+
+        #testes-unitarios,
+        #testes-componentes {
+            margin-top: 10px;
+        }
+
+        h3 {
+            margin-bottom: 6px;
+        }
     </style>
 </head>
+
 <body>
     <input id="input1" type="text" placeholder="Número 1">
     <input id="input2" type="text" placeholder="Número 2">
@@ -34,28 +52,24 @@
             const num2 = parseFloat(document.getElementById("input2").value);
             const resultado = num1 + num2;
             document.getElementById("soma").textContent = "Resultado: " + (num1 + num2);
-            limparInputs();
         }
         function subtrair() {
             const num1 = parseFloat(document.getElementById("input1").value);
             const num2 = parseFloat(document.getElementById("input2").value);
             const resultado = num1 - num2;
             document.getElementById("soma").textContent = "Resultado: " + (num1 - num2);
-            limparInputs();
         }
         function multiplicar() {
             const num1 = parseFloat(document.getElementById("input1").value);
             const num2 = parseFloat(document.getElementById("input2").value);
             const resultado = num1 * num2;
             document.getElementById("soma").textContent = "Resultado: " + (num1 * num2);
-            limparInputs();
         }
         function porcentagem() {
             const num1 = parseFloat(document.getElementById("input1").value);
             const num2 = parseFloat(document.getElementById("input2").value);
             const resultado = (num1 / 100) * num2;
             document.getElementById("soma").textContent = "Resultado: " + ((num1 / 100) * num2);
-            limparInputs();
         }
         function dividir() {
             const num1 = parseFloat(document.getElementById("input1").value);
@@ -66,13 +80,12 @@
             } else {
                 document.getElementById("soma").textContent = "Erro: Divisão por zero!";
             }
-            limparInputs();
         }
 
         function renderizarResultados(containerId, titulo, resultados) {
             const container = document.getElementById(containerId);
             const passou = resultados.filter(r => r.passou).length;
-            const total  = resultados.length;
+            const total = resultados.length;
             let html = `<h3>${titulo}: ${passou}/${total} passaram</h3><ul>`;
             for (const r of resultados) {
                 const cls = r.passou ? "passou" : "falhou";
@@ -86,17 +99,16 @@
         function rodarTestes() {
             const resultados = executarTestesUnitarios();
             renderizarResultados("testes-unitarios", "Testes Unitários", resultados);
-            limparInputs();
         }
 
         function rodarTestesComponent() {
             const resultados = executarTestesComponent();
             renderizarResultados("testes-componentes", "Testes de Componente", resultados);
-            limparInputs();
         }
     </script>
 
     <script src="testes/unitario.test.js"></script>
     <script src="testes/component.test.js"></script>
 </body>
+
 </html>
