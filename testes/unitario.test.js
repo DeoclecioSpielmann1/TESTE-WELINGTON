@@ -10,7 +10,6 @@ function executarTestesUnitarios() {
         }
     }
 
-    // funções puras extraídas da lógica do index.html
     function somar(a, b) { return a + b; }
     function subtrair(a, b) { return a - b; }
     function multiplicar(a, b) { return a * b; }
