@@ -1,0 +1,125 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f0eff8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #26215C;
+    margin-bottom: 1.5rem;
+}
+
+form {
+    background: #ffffff;
+    border: 0.5px solid #d3d1c7;
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #5F5E5A;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    border: 0.5px solid #b4b2a9;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #2C2C2A;
+    background: #ffffff;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus {
+    border-color: #534AB7;
+    box-shadow: 0 0 0 3px rgba(83, 74, 183, 0.12);
+}
+
+input::placeholder {
+    color: #b4b2a9;
+}
+
+button[type="submit"] {
+    width: 100%;
+    height: 40px;
+    background-color: #534AB7;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+#painel-testes {
+    width: 100%;
+    max-width: 420px;
+    margin-top: 1.5rem;
+}
+
+#painel-testes button {
+    width: 100%;
+    height: 38px;
+    background-color: #ffffff;
+    color: #534AB7;
+    border: 0.5px solid #534AB7;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+#painel-testes button:hover {
+    background-color: #f0eff8;
+}
+
+#resultados {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.resumo-testes {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.item-teste {
+    font-size: 12px;
+    padding: 6px 10px;
+    background: #ffffff;
+    border: 0.5px solid #d3d1c7;
+    border-radius: 6px;
+}
